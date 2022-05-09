@@ -10,6 +10,7 @@ const [inputState,setInputState] = useState({
   nota: "",
 });
 
+const initialState= JSON.parse (localStorage.getItem("notas"))||[];
 const handleInputChange = (event) => {
   // console.log(event.target);
   setInputState({
@@ -23,23 +24,93 @@ const handleClicklimpiar= () => {
 };
 
 const handleClickGuardar = () => {
-  let arregloNotas = JSON.parse (localStorage.getItem("notas"))||[];
   arregloNotas.push(inputState);
   localStorage.setItem("notas", JSON.stringify(arregloNotas));
   handleClicklimpiar(); 
 };
 
-  return (
+const handleBorrarNota = (index) => {
+  const nuevoArreglo =[];
+  notas.forEach((nota,index)) => {
+    if (index i){
+      nuevoArreglo.push(nota);
 
+    }
+  };);
+};
+
+
+const handleClicklimpiar =() => {
+  setNotas([]);
+  localStorage.setItem("notas",JSON.stringify([]));
+};
+
+return(
   <div className="App container">
+    <div className="row">
+      <div className="col">
+        <h3>lista</h3>
+      </div>
+        <div className="col">
+        <h3>Notas</h3>
+        <label className="mb-2" style={{ width: "100%"}}>
+          titulo
+          <input 
+          id = "titulo"
+          name="titulo"
+          type="text" 
+          onChange={handleInputChange}
+          value={inputState.titulo}
+          style={{ width: "100%"}}
+          />
+        </label>
+        <br />
+          <label className="mb-2" style={{ width: "100%"}}>
+          fecha
+          <input 
+          id = "fecha"
+          name="fecha"
+          type="text" 
+          onChange={handleInputChange}
+          value={inputState.fecha}
+          style={{ width: "100%"}}
+          />
+          </label>
+          <br />
+          <label className="mb-2" style={{ width: "100%"}}>
+          nota
+          <input 
+          id = "nota"
+          name="nota"
+          type="text" 
+          onChange={handleInputChange}
+          value={inputState.nota}
+          style={{ width: "100%"}}
+          />
+        </label>
+        </div>
+
+    </div>
+
+  </div>
+);
+
+
+
+
+
+
+
+  return (
+ <div className="App container">
   <div className="row">
   <div className="col">
   <h3>lista</h3>
   </div>
   <div className="col">
-  <h3<Notas</h3>
+  <h3>Notas</h3>//</div>/
   <label className="mb-2" style={{width: "100%"}}>
-    titulo
+    
     <input
     id="titulo"
     name="titulo"
